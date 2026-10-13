@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Same Post, Different Views</title>
+<style>
+:root{color-scheme:light;--ink:#19342d;--muted:#52655f;--paper:#f5f4ee;--line:#d2dad2;--accent:#235c46}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select{font:inherit}button,select,input{border:1px solid #84988d;border-radius:8px;padding:10px 13px;background:white;color:var(--ink);max-width:100%}button,select,summary{cursor:pointer}button:hover{background:#e9efe8}button[aria-pressed="true"],button.primary{background:var(--accent);color:white;border-color:var(--accent)}:focus-visible{outline:3px solid #a04418;outline-offset:4px}a{color:var(--accent)}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(2.3rem,6vw,4.2rem);letter-spacing:-.055em;line-height:1.04;max-width:780px;margin-bottom:24px}h2{font-size:1.2rem;line-height:1.4}h3{font-size:1rem}p{margin-bottom:12px}.wrap{max-width:1180px;margin:auto;padding:40px 28px}.eyebrow{font-size:.76rem;font-weight:750;letter-spacing:.14em;text-transform:uppercase}.topline{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:38px}.stamp{font-size:.8rem;border:1px solid var(--line);border-radius:99px;padding:5px 12px}.intro{max-width:790px;color:var(--muted)}.question{font-size:1.3rem;font-weight:650;margin-top:22px}.layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:28px;align-items:start;margin-top:30px}.panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px}.controls{margin-top:28px}.button-row{display:flex;flex-wrap:wrap;gap:8px}.rule{margin:16px 0 0;color:var(--muted);font-size:.91rem}.start{margin-top:18px}.start label,form label{display:block;font-size:.88rem;font-weight:650;margin-bottom:6px}.start select,form select,form input{width:100%}.cycle{font-size:.83rem;color:var(--muted);margin:8px 0 0}.section-head{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:14px}.section-head h2{margin:0}.small{font-size:.84rem;color:var(--muted)}ol{padding:0;list-style:none;margin:0}.comment{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:12px}.comment.extra{background:#f9faf6}.comment-head{display:flex;gap:12px;align-items:center;margin-bottom:12px}.rank{width:34px;height:34px;display:grid;place-items:center;background:#eaf0e7;border-radius:50%;font-weight:750;flex-shrink:0}.identity{font-size:.9rem;font-weight:650}.meta{font-size:.78rem;color:var(--muted)}.badge{display:inline-block;border:1px solid var(--line);border-radius:5px;padding:2px 8px;font-size:.75rem;font-weight:650}.supportive{background:#e5efe6}.concerned{background:#f6e7de}.conditional{background:#ece8f4}.unclear{background:#edf0f2}.comment-foot{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}.likes{font-size:.82rem;font-variant-numeric:tabular-nums}details{font-size:.85rem;margin-top:13px}summary{width:fit-content;text-decoration:underline;text-underline-offset:3px}details p{margin:9px 0 0;color:var(--muted)}aside{display:grid;gap:16px}.counts{display:grid;gap:10px;margin:16px 0}.count-row{display:flex;justify-content:space-between;gap:12px;font-size:.9rem}.count-row b{font-variant-numeric:tabular-nums}.big{font-size:2.3rem;line-height:1.1;letter-spacing:-.04em;font-weight:700}.comparison p{font-size:.85rem}.idline{overflow-wrap:anywhere}.positions{margin-top:12px;display:grid;gap:5px;font-size:.81rem}.position{display:flex;justify-content:space-between;gap:12px;border-top:1px solid #e6eae4;padding-top:5px}.field{margin-bottom:13px}.error{color:#a12e1b;font-size:.85rem}.feedback{font-size:.85rem;color:var(--accent);min-height:1.5em;margin-top:10px}.full-width{width:100%}.limits{border-top:1px solid var(--line);margin-top:38px;padding-top:25px}.limits ul{padding-left:20px;color:var(--muted);font-size:.88rem}.limits li{margin:8px 0}.definitions{display:grid;grid-template-columns:1fr 1fr;gap:14px}.definitions p{font-size:.85rem;color:var(--muted)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}[hidden]{display:none!important}footer{padding:25px 0 0;color:var(--muted);font-size:.8rem}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.wrap{padding:24px 18px}.topline{margin-bottom:28px}.panel{padding:18px}.definitions{grid-template-columns:1fr}.question{font-size:1.1rem}.stamp{font-size:.7rem}.comment{padding:17px}.section-head{flex-wrap:wrap}}
+</style>
+</head>
+<body>
+<main class="wrap">
+ <div class="topline"><span class="eyebrow">A sorting experiment</span><span class="stamp">12 fictional comments · no live data</span></div>
+ <header>
+  <h1>Same Post,<br>Different Views</h1>
+  <p class="intro">One comment set. Three sorting rules. Explore how a different rule changes the five comments you see first.</p>
+  <p class="question">Should students be allowed to use AI tools in coursework?</p>
+  <p class="intro small">Inspired by an observation of YouTube comments on “Should we let students use ChatGPT?” by Natasha Berg. This is an independent simulation, not a reconstruction of YouTube.</p>
+ </header>
+ <section class="panel controls" aria-labelledby="sort-title">
+  <div class="section-head"><h2 id="sort-title">Choose a sorting rule</h2><button id="reset" type="button">Reset demo</button></div>
+  <div class="button-row" role="group" aria-label="Sorting rule">
+   <button type="button" data-mode="liked" aria-pressed="true">Most liked</button>
+   <button type="button" data-mode="newest" aria-pressed="false">Newest</button>
+   <button type="button" data-mode="mixed" aria-pressed="false">Mixed viewpoints</button>
+  </div>
+  <p id="rule" class="rule"></p>
+  <div id="start-control" class="start" hidden><label for="start-category">Starting category</label><select id="start-category"></select><p class="cycle">Cycle: Supportive → Concerned/Opposed → Conditional → Unclear → back to Supportive. Start at your selected category; skip empty or exhausted categories.</p></div>
+ </section>
+ <div id="announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+ <div class="layout">
+  <section aria-labelledby="comments-title">
+   <div class="section-head"><h2 id="comments-title">The first five</h2><span id="visible-label" class="small">Showing 5 of 12</span></div>
+   <ol id="comments" aria-label="Sorted fictional comments"></ol>
+   <button id="expand" class="full-width" type="button" aria-expanded="false" aria-controls="comments">Show all 12 comments</button>
+  </section>
+  <aside aria-label="Compare and experiment">
+   <section class="panel" aria-labelledby="composition-title"><div class="eyebrow">Visible composition</div><h2 id="composition-title">Who is in the first five?</h2><div id="counts" class="counts"></div><p class="small">Counts describe these five visible comments, not public opinion. Expanding the list does not change this summary.</p></section>
+   <section class="panel comparison" aria-labelledby="comparison-title"><div class="eyebrow">Fixed comparison</div><h2 id="comparison-title">Overlap with the baseline</h2><p><span id="overlap" class="big"></span> comments in common</p><p>The baseline is the first five from <strong>initial data → Mixed viewpoints → Supportive first</strong>. It never changes during this demo.</p><p class="idline">Baseline IDs, in order: <strong id="baseline-ids"></strong></p><p class="idline">Entered: <strong id="entered"></strong><br>Left: <strong id="left"></strong></p><div id="positions" class="positions" aria-label="Current and baseline positions"></div><p class="small">Positions show current rank compared with baseline rank. Shared members can still appear in different positions.</p></section>
+   <section class="panel" aria-labelledby="edit-title"><div class="eyebrow">Try a change</div><h2 id="edit-title">Edit example likes</h2><form id="likes-form" novalidate><div class="field"><label for="comment-select">Comment</label><select id="comment-select"></select></div><div class="field"><label for="likes-input">Example likes (whole number, 0 or more)</label><input id="likes-input" type="text" inputmode="numeric" autocomplete="off" aria-describedby="likes-help likes-error"><p id="likes-help" class="small">Digits only. Changes stay in this session; refreshing restores the initial data.</p><p id="likes-error" class="error" role="alert"></p></div><button class="primary full-width" type="submit">Apply likes</button></form><p id="edit-feedback" class="feedback" role="status"></p></section>
+  </aside>
+ </div>
+ <section class="limits" aria-labelledby="limits-title"><h2 id="limits-title">What this model can—and cannot—show</h2><ul><li>All comments, participant labels, like counts, and timestamps are fictional examples. No real usernames are used.</li><li>Most liked is a simple numerical rule, not YouTube’s real Top comments algorithm.</li><li>Mixed viewpoints depends on manual labels and a human-chosen category order. It is not the fairest or most accurate ranking.</li><li>This model shows ordering and visibility only. It does not measure attitude changes or whether information is true.</li><li>Four simplified categories cannot capture a comment’s full meaning. Unclear does not mean neutral; Concerned/Opposed does not mean everyone in that category wants a total ban.</li></ul><details><summary>How the manual categories are defined</summary><div class="definitions"><p><strong>Supportive:</strong> Explicitly supports AI use in coursework without making a restriction a condition of that support.</p><p><strong>Concerned/Opposed:</strong> Mainly expresses risks, concern, or opposition, without an explicit proposal for conditional acceptance.</p><p><strong>Conditional:</strong> Explicitly accepts AI use only under stated conditions. This category takes priority when concern accompanies a clear acceptance condition.</p><p><strong>Unclear:</strong> The text does not establish a position on AI use in coursework, including reactions to the talk alone or ambiguous remarks.</p></div></details></section>
+ <footer>Same Post, Different Views · A local, fictional-data demonstration</footer>
+</main>
+<script>
+'use strict';
+const CATEGORIES = Object.freeze(['Supportive','Concerned/Opposed','Conditional','Unclear']);
+const INITIAL_COMMENTS = Object.freeze([
+ {id:'C01',text:'AI tools can help students explore ideas when they get stuck. I support allowing them in coursework.',likes:92,publishedAt:'2026-09-04T12:00:00Z',category:'Supportive',reason:'Explicitly supports coursework use without making a restriction a condition.'},
+ {id:'C02',text:'I worry that students will hand over the hard thinking to AI and miss the practice they need.',likes:120,publishedAt:'2026-09-02T12:00:00Z',category:'Concerned/Opposed',reason:'Expresses concern about lost practice without offering a condition for acceptance; it does not demand a total ban.'},
+ {id:'C03',text:'I would allow AI feedback only after students have written their own first draft.',likes:80,publishedAt:'2026-09-12T12:00:00Z',category:'Conditional',reason:'Makes an independently written first draft a condition for allowing AI feedback.'},
+ {id:'C04',text:'That talk was frustrating to watch.',likes:12,publishedAt:'2026-09-08T12:00:00Z',category:'Unclear',reason:'Evaluates the talk but does not state a position on students using AI in coursework.'},
+ {id:'C05',text:'I think AI explanations make coursework more approachable. Students should be able to use these tools.',likes:80,publishedAt:'2026-09-12T12:00:00Z',category:'Supportive',reason:'Clearly supports allowing the tools without stating an acceptance condition.'},
+ {id:'C06',text:'I oppose using AI to produce coursework answers. The finished answer can hide what a student actually understands.',likes:80,publishedAt:'2026-09-06T12:00:00Z',category:'Concerned/Opposed',reason:'Opposes AI-produced coursework answers without proposing conditional acceptance.'},
+ {id:'C07',text:'AI should be allowed only when students disclose how they used it and check the output themselves.',likes:105,publishedAt:'2026-09-03T12:00:00Z',category:'Conditional',reason:'Acceptance explicitly depends on disclosure and checking the output.'},
+ {id:'C08',text:'👏 🤔',likes:66,publishedAt:'2026-09-10T12:00:00Z',category:'Unclear',reason:'The emoji reaction does not reliably establish a specific position on coursework use.'},
+ {id:'C09',text:'Being able to ask AI follow-up questions is useful for learning. I am in favor of students using it for coursework.',likes:34,publishedAt:'2026-09-07T12:00:00Z',category:'Supportive',reason:'Explicitly favors coursework use and does not make permission conditional.'},
+ {id:'C10',text:'I am concerned that easy access to AI answers will weaken students’ confidence in solving problems on their own.',likes:58,publishedAt:'2026-09-11T12:00:00Z',category:'Concerned/Opposed',reason:'Raises a risk without specifying conditions for acceptance or calling for a complete ban.'},
+ {id:'C11',text:'I would permit AI for brainstorming, but only if the final argument and writing are the student’s own.',likes:24,publishedAt:'2026-09-09T12:00:00Z',category:'Conditional',reason:'Limits acceptance to brainstorming with independent final argument and writing.'},
+ {id:'C12',text:'Our class had a long discussion about this yesterday.',likes:98,publishedAt:'2026-09-01T12:00:00Z',category:'Unclear',reason:'Reports a discussion without expressing a position on allowing AI use.'}
+].map(comment => Object.freeze(comment)));
+
+// Pure sorting functions: inputs and original comment objects are never mutated.
+function compareId(a,b){return a.id < b.id ? -1 : a.id > b.id ? 1 : 0;}
+function byNewest(a,b){return Date.parse(b.publishedAt)-Date.parse(a.publishedAt)||compareId(a,b);}
+function sortComments(data,mode,startCategory){
+ if(mode==='liked') return [...data].sort((a,b)=>b.likes-a.likes||byNewest(a,b));
+ if(mode==='newest') return [...data].sort(byNewest);
+ const queues=CATEGORIES.map(category=>data.filter(c=>c.category===category).sort(byNewest));
+ const start=CATEGORIES.indexOf(startCategory);
+ const result=[];
+ while(queues.some(queue=>queue.length)){
+  for(let step=0;step<CATEGORIES.length;step++){
+   const queue=queues[(start+step)%CATEGORIES.length];
+   if(queue.length) result.push(queue.shift());
+  }
+ }
+ return result;
+}
+const BASELINE_IDS=Object.freeze(sortComments(INITIAL_COMMENTS,'mixed','Supportive').slice(0,5).map(c=>c.id));
+function summarize(top){
+ const ids=top.map(c=>c.id);
+ return {counts:CATEGORIES.map(category=>top.filter(c=>c.category===category).length),overlap:ids.filter(id=>BASELINE_IDS.includes(id)).length,entered:ids.filter(id=>!BASELINE_IDS.includes(id)),left:BASELINE_IDS.filter(id=>!ids.includes(id))};
+}
+function parseLikes(raw){
+ if(!/^[0-9]+$/.test(raw)) return null;
+ const value=Number(raw);
+ return Number.isSafeInteger(value)&&value>=0 ? value : null;
+}
+function initialState(){return {comments:INITIAL_COMMENTS.map(c=>({...c})),mode:'liked',start:'Supportive',expanded:false};}
+let state=initialState();
+const $=id=>document.getElementById(id);
+const categoryClasses=['supportive','concerned','conditional','unclear'];
+const ruleText={liked:'Example likes, highest first. Ties: newest timestamp first, then ID ascending. This is not YouTube Top comments.',newest:'Example timestamps, newest first. Ties: ID ascending. Likes do not affect this rule.',mixed:'Take one comment from each category in turn. Within each category: newest timestamp first, then ID ascending. Likes do not affect this rule.'};
+function node(tag,className,text){const element=document.createElement(tag);if(className)element.className=className;if(text!==undefined)element.textContent=text;return element;}
+function render(announce=true){
+ const ordered=sortComments(state.comments,state.mode,state.start),top=ordered.slice(0,5),stats=summarize(top);
+ document.querySelectorAll('[data-mode]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.mode===state.mode)));
+ $('rule').textContent=ruleText[state.mode];$('start-control').hidden=state.mode!=='mixed';$('start-category').value=state.start;
+ $('comments-title').textContent=state.expanded?'All 12, in order':'The first five';$('visible-label').textContent=state.expanded?'Summary still uses the first 5':'Showing 5 of 12';
+ $('comments').replaceChildren();
+ (state.expanded?ordered:top).forEach((comment,index)=>{
+  const item=node('li','comment'+(index>=5?' extra':''));item.dataset.id=comment.id;
+  const head=node('div','comment-head');const rank=node('span','rank',String(index+1));rank.setAttribute('aria-label','Position '+(index+1));head.append(rank);
+  const info=node('div');info.append(node('div','identity',comment.id+' · Fictional participant '+comment.id.slice(1)));
+  const date=node('time','meta',comment.publishedAt.replace('T',' · ').replace(':00Z',' UTC'));date.dateTime=comment.publishedAt;info.append(date);head.append(info);item.append(head,node('p','',comment.text));
+  const foot=node('div','comment-foot');foot.append(node('span','badge '+categoryClasses[CATEGORIES.indexOf(comment.category)],comment.category),node('span','likes',comment.likes+' example likes'));item.append(foot);
+  const details=node('details');details.append(node('summary','','Why this label?'),node('p','',comment.reason));item.append(details);$('comments').append(item);
+ });
+ $('expand').textContent=state.expanded?'Show only the first 5':'Show all 12 comments';$('expand').setAttribute('aria-expanded',String(state.expanded));
+ $('counts').replaceChildren();CATEGORIES.forEach((category,i)=>{const row=node('div','count-row');row.append(node('span','',category),node('b','',stats.counts[i]+' / 5'));$('counts').append(row);});
+ $('overlap').textContent=stats.overlap+' / 5';$('baseline-ids').textContent=BASELINE_IDS.join(', ');$('entered').textContent=stats.entered.join(', ')||'None';$('left').textContent=stats.left.join(', ')||'None';
+ $('positions').replaceChildren();top.forEach((comment,i)=>{const rank=BASELINE_IDS.indexOf(comment.id);const row=node('div','position');row.append(node('strong','',comment.id),node('span','',`Now #${i+1} · baseline ${rank<0?'outside top 5':'#'+(rank+1)}`));$('positions').append(row);});
+ if(announce)$('announcement').textContent=`${{liked:'Most liked',newest:'Newest',mixed:'Mixed viewpoints'}[state.mode]}${state.mode==='mixed'?', '+state.start+' first':''}. First five: ${top.map(c=>c.id).join(', ')}. ${stats.overlap} of 5 overlap with the fixed baseline.`;
+}
+function syncEditor(){const comment=state.comments.find(c=>c.id===$('comment-select').value);$('likes-input').value=String(comment.likes);$('likes-input').removeAttribute('aria-invalid');$('likes-error').textContent='';$('edit-feedback').textContent='';}
+function resetDemo(){state=initialState();$('comment-select').value=INITIAL_COMMENTS[0].id;syncEditor();render();$('edit-feedback').textContent='Demo reset to initial data, Most liked, Supportive first, and five visible comments.';}
+CATEGORIES.forEach(category=>{const option=node('option','',category);option.value=category;$('start-category').append(option);});
+INITIAL_COMMENTS.forEach(comment=>{const option=node('option','',comment.id+' — '+comment.category);option.value=comment.id;$('comment-select').append(option);});
+document.querySelectorAll('[data-mode]').forEach(button=>button.addEventListener('click',()=>{state.mode=button.dataset.mode;render();}));
+$('start-category').addEventListener('change',()=>{state.start=$('start-category').value;render();});
+$('expand').addEventListener('click',()=>{state.expanded=!state.expanded;render();});
+$('comment-select').addEventListener('change',syncEditor);
+$('likes-form').addEventListener('submit',event=>{
+ event.preventDefault();const likes=parseLikes($('likes-input').value);
+ if(likes===null){$('likes-input').setAttribute('aria-invalid','true');$('likes-error').textContent='Enter digits only: a whole number from 0 to 9,007,199,254,740,991. Empty values, decimals, and negative numbers are not accepted.';$('edit-feedback').textContent='';$('likes-input').focus();return;}
+ const id=$('comment-select').value;state.comments=state.comments.map(c=>c.id===id?{...c,likes}:c);$('likes-input').removeAttribute('aria-invalid');$('likes-error').textContent='';render();$('edit-feedback').textContent=`${id} now has ${likes} example likes. ${state.mode==='liked'?'Most liked has been recalculated.':'Order is unchanged: this rule does not use likes.'}`;
+});
+$('reset').addEventListener('click',resetDemo);
+syncEditor();render(false);
+</script>
+</body>
+</html>
