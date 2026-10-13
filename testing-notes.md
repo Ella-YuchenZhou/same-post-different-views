@@ -147,3 +147,29 @@ The optional local preview returned HTTP 200 with Content-Type text/html. This v
 The Playwright package was available, but its expected Chromium executable was absent. No browser was installed. Opening a preview is not counted as testing. Direct-file execution, actual button/form events, complete Reset interaction, visual layout, keyboard behavior, and screen-reader announcements remain unverified in a browser. The manual actual-result fields above are intentionally blank.
 
 No participant testing was performed. No personal reflection has been written for the student.
+
+
+## Deployment verification — 2026-10-12 (executed by Codex)
+
+This section records later checks and supplements the earlier historical verification limits. The original notes and blank student/manual result fields above are preserved. These are automated checks by Codex, not tests performed by the student.
+
+- Created a separate public repository: https://github.com/Ella-YuchenZhou/same-post-different-views
+- GitHub Pages source: main branch, repository root.
+- Published page: https://ella-yuchenzhou.github.io/same-post-different-views/
+- GitHub reported the initial deployment commit 580128a82fcfe3e11e9e508cd4de77d83ed4b16a as built with no build error.
+- Playwright used the installed Google Chrome executable in headless mode to test the actual HTTPS page. No additional browser installation was needed.
+
+Actual browser automation results: all ten check groups passed.
+
+1. HTTPS page returned HTTP 200; title and initial Most liked first five matched expectations.
+2. Expansion produced exactly the expected 12 unique IDs, including like/time/ID tie handling.
+3. Newest full ordering matched the reference.
+4. All four Mixed starting categories produced expected first-five IDs, overlap counts, and category counts.
+5. Editing C04 to 999 likes changed Most liked only; Newest/Mixed ordering and fixed baseline remained correct.
+6. Empty, negative, decimal, decimal-form integer, and exponent-form inputs were rejected without changing data.
+7. Full Reset interaction restored original likes, Most liked, five comments, and Supportive as the Mixed start.
+8. Keyboard Enter activated a sorting button and a classification-reason disclosure.
+9. No horizontal page overflow was detected at viewport widths 1280, 800, 390, and 320 CSS pixels.
+10. Refresh restored defaults; no JavaScript page errors were observed during the checks.
+
+Remaining limits: no real participant testing, no physical mobile-device testing, no screen-reader testing, no exhaustive keyboard navigation audit, no 200% zoom check, and no comprehensive visual-design/accessibility audit. Viewport overflow assertions do not establish full visual correctness. No personal reflection is supplied.
